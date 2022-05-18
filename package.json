@@ -1,0 +1,22 @@
+{
+  "name": "jest-rpg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tj-tieso/jest-RPG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tj-tieso/jest-RPG/issues"
+  },
+  "homepage": "https://github.com/tj-tieso/jest-RPG#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
