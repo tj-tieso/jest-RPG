@@ -25,6 +25,14 @@ test("gets player stats as an object", () => {
   expect(player.getStats()).toHaveProperty("agility");
 });
 
+test("gets player health value", () => {
+  const player = new Player("Gorble");
+
+  expect(player.getHealth()).toEqual(
+    expect.stringContaining(player.health.toString())
+  );
+});
+
 test("gets inventory from player or returns false", () => {
   const player = new Player("Gorble");
 
@@ -33,14 +41,6 @@ test("gets inventory from player or returns false", () => {
   player.inventory = [];
 
   expect(player.getInventory()).toEqual(false);
-});
-
-test("gets player health value", () => {
-  const player = new Player("Gorble");
-
-  expect(player.getHealth()).toEqual(
-    expect.stringContaining(player.health.toString())
-  );
 });
 
 test("checks to see if player is Alive", () => {
@@ -62,4 +62,31 @@ test("subtracts from player health", () => {
 
   player.reduceHealth(99999);
   expect(player.health).toBe(0);
+});
+
+test("gets the attack value of player", () => {
+  const player = new Player("Gorble");
+  player.strength = 10;
+
+  expect(player.getAttackValue()).toBeGreaterThanOrEqual(5);
+  expect(player.getAttackValue()).toBeLessThanOrEqual(15);
+});
+
+test("adds a potion to player inventory", () => {
+  const player = new Player("Gorble");
+  const oldCount = player.inventory.length;
+
+  player.addPotion(new Potion());
+
+  expect(player.inventory.length).toBeGreaterThan(oldCount);
+});
+
+test("uses a potion from player inventory", () => {
+  const player = new Player("Gorble");
+  player.inventory = [new Potion(), new Potion(), new Potion()];
+  const oldCount = player.inventory.length;
+
+  player.usePotion(1);
+
+  expect(player.inventory.length).toBeLessThan(oldCount);
 });
